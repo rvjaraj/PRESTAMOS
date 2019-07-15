@@ -26,6 +26,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u")
+    , @NamedQuery(name = "Usuario.findAproSI", query = "SELECT u FROM Usuario u WHERE u.prestamo = 'SI' ")
+    , @NamedQuery(name = "Usuario.findAproNO", query = "SELECT u FROM Usuario u WHERE u.prestamo = 'NO' ")
     , @NamedQuery(name = "Usuario.findSecre", query = "SELECT t1 FROM Usuario t1 WHERE NOT EXISTS (SELECT NULL FROM Secretaria t2 WHERE t2.idUsuario.idUsuario = t1.idUsuario)")
     , @NamedQuery(name = "Usuario.findAdmin", query = "SELECT t1 FROM Usuario t1 WHERE NOT EXISTS (SELECT NULL FROM Administrador t2 WHERE t2.idUsuario.idUsuario = t1.idUsuario)")
     , @NamedQuery(name = "Usuario.findByIdUsuario", query = "SELECT u FROM Usuario u WHERE u.idUsuario = :idUsuario")

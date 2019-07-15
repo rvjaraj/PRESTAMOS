@@ -49,6 +49,16 @@ public class ControladorUsuario {
         Query query = em.createNamedQuery("Usuario.findSecre");
         return query.getResultList();
     }
+    
+    public List<Usuario> findAproNO() {
+        Query query = em.createNamedQuery("Usuario.findAproNO");
+        return query.getResultList();
+    }
+    
+     public List<Usuario> findAproSI() {
+        Query query = em.createNamedQuery("Usuario.findAproSI");
+        return query.getResultList();
+    }
 
     public Usuario findByID(int id) {
         Usuario u = em.find(Usuario.class, id);
