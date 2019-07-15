@@ -1,0 +1,1 @@
+insert INTO prestamo.fundacion values(1,'FUNDACION ', 'CUENCA',0);

@@ -10,6 +10,8 @@ import java.math.BigDecimal;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -21,18 +23,19 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author vinic
  */
 @Entity
-@Table(name = "banco")
+@Table(name = "fundacion")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Banco.findAll", query = "SELECT b FROM Banco b")
-    , @NamedQuery(name = "Banco.findByIdBanco", query = "SELECT b FROM Banco b WHERE b.idBanco = :idBanco")
-    , @NamedQuery(name = "Banco.findByNombre", query = "SELECT b FROM Banco b WHERE b.nombre = :nombre")
-    , @NamedQuery(name = "Banco.findByDireccion", query = "SELECT b FROM Banco b WHERE b.direccion = :direccion")
-    , @NamedQuery(name = "Banco.findByValorNeto", query = "SELECT b FROM Banco b WHERE b.valorNeto = :valorNeto")})
-public class Banco implements Serializable {
+    @NamedQuery(name = "Fundacion.findAll", query = "SELECT f FROM Fundacion f")
+    , @NamedQuery(name = "Fundacion.findByIdBanco", query = "SELECT f FROM Fundacion f WHERE f.idBanco = :idBanco")
+    , @NamedQuery(name = "Fundacion.findByNombre", query = "SELECT f FROM Fundacion f WHERE f.nombre = :nombre")
+    , @NamedQuery(name = "Fundacion.findByDireccion", query = "SELECT f FROM Fundacion f WHERE f.direccion = :direccion")
+    , @NamedQuery(name = "Fundacion.findByValorNeto", query = "SELECT f FROM Fundacion f WHERE f.valorNeto = :valorNeto")})
+public class Fundacion implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "idBanco")
     private Integer idBanco;
@@ -47,14 +50,14 @@ public class Banco implements Serializable {
     @Column(name = "ValorNeto")
     private BigDecimal valorNeto;
 
-    public Banco() {
+    public Fundacion() {
     }
 
-    public Banco(Integer idBanco) {
+    public Fundacion(Integer idBanco) {
         this.idBanco = idBanco;
     }
 
-    public Banco(Integer idBanco, String nombre, String direccion, BigDecimal valorNeto) {
+    public Fundacion(Integer idBanco, String nombre, String direccion, BigDecimal valorNeto) {
         this.idBanco = idBanco;
         this.nombre = nombre;
         this.direccion = direccion;
@@ -103,10 +106,10 @@ public class Banco implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Banco)) {
+        if (!(object instanceof Fundacion)) {
             return false;
         }
-        Banco other = (Banco) object;
+        Fundacion other = (Fundacion) object;
         if ((this.idBanco == null && other.idBanco != null) || (this.idBanco != null && !this.idBanco.equals(other.idBanco))) {
             return false;
         }
@@ -115,7 +118,7 @@ public class Banco implements Serializable {
 
     @Override
     public String toString() {
-        return "modelo.Banco[ idBanco=" + idBanco + " ]";
+        return "modelo.Fundacion[ idBanco=" + idBanco + " ]";
     }
     
 }

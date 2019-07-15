@@ -10,21 +10,21 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
-import modelo.Banco;
+import modelo.Fundacion;
 
 /**
  *
  * @author gusta
  */
-public class ControladorBanco {
+public class ControladorFundacion {
 
     EntityManager em;
 
-    public ControladorBanco() {
+    public ControladorFundacion() {
         em = MySQLDB.init();
     }
 
-    public void Crear(Banco u) {
+    public void Crear(Fundacion u) {
         try {
             em.getTransaction().begin();
             em.persist(u);
@@ -35,13 +35,13 @@ public class ControladorBanco {
 
     }
 
-    public List<Banco> findAll() {
+    public List<Fundacion> findAll() {
         Query query = em.createNamedQuery("Banco.findAll");
         return query.getResultList();
     }
 
-    public Banco findByID(int id) {
-        Banco u = em.find(Banco.class, id);
+    public Fundacion findByID(int id) {
+        Fundacion u = em.find(Fundacion.class, id);
         if (u == null) {
             u = null;
         }
@@ -51,7 +51,7 @@ public class ControladorBanco {
     public boolean eliminar(int id) {
         try {
             em.getTransaction().begin();
-            Banco u = em.find(Banco.class, id);
+            Fundacion u = em.find(Fundacion.class, id);
             em.remove(u);
             em.getTransaction().commit();
         } catch (Exception e) {
@@ -61,7 +61,7 @@ public class ControladorBanco {
         return true;
     }
 
-    public boolean edit(Banco u) {
+    public boolean edit(Fundacion u) {
         try {
             em.getTransaction().begin();
             em.merge(u);

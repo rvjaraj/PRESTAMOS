@@ -5,11 +5,7 @@
  */
 package vista;
 
-import vista.Banco.BuscarBanco;
-import vista.Banco.CrearBanco;
 import vista.Banco.EditarBanco;
-import vista.Banco.EliminarBanco;
-import vista.Banco.ListarBancos;
 import vista.Cliente.BuscarUsuario;
 import vista.puestos.AgregarAdministradores;
 import vista.puestos.AgregarSecretarias;
@@ -48,23 +44,10 @@ public class VistaAdministrador extends javax.swing.JFrame {
         listadeClientes1 = new javax.swing.JLabel();
         crear1 = new javax.swing.JButton();
         editar1 = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        listadeClientes2 = new javax.swing.JLabel();
+        crear2 = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
-        fileMenu = new javax.swing.JMenu();
-        openMenuItem = new javax.swing.JMenuItem();
-        saveMenuItem = new javax.swing.JMenuItem();
-        saveAsMenuItem = new javax.swing.JMenuItem();
-        editMenu = new javax.swing.JMenu();
-        cutMenuItem = new javax.swing.JMenuItem();
-        copyMenuItem = new javax.swing.JMenuItem();
-        pasteMenuItem = new javax.swing.JMenuItem();
-        deleteMenuItem = new javax.swing.JMenuItem();
-        fileMenu1 = new javax.swing.JMenu();
-        openMenuItem1 = new javax.swing.JMenuItem();
-        saveMenuItem1 = new javax.swing.JMenuItem();
-        saveAsMenuItem1 = new javax.swing.JMenuItem();
-        exitMenuItem = new javax.swing.JMenuItem();
-        exitMenuItem1 = new javax.swing.JMenuItem();
-        helpMenu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -98,7 +81,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(197, 197, 197)
                 .addComponent(crear)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 296, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 316, Short.MAX_VALUE)
                 .addComponent(editar)
                 .addGap(89, 89, 89))
         );
@@ -144,7 +127,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(197, 197, 197)
                 .addComponent(crear1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 306, Short.MAX_VALUE)
                 .addComponent(editar1)
                 .addGap(89, 89, 89))
         );
@@ -157,21 +140,59 @@ public class VistaAdministrador extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(crear1)
                     .addComponent(editar1))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(67, Short.MAX_VALUE))
+        );
+
+        listadeClientes2.setFont(new java.awt.Font("Verdana", 3, 14)); // NOI18N
+        listadeClientes2.setText("FUNDACION");
+
+        crear2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fundacion.jpg"))); // NOI18N
+        crear2.setText("DATOS DE FUDACION");
+        crear2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crear2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap(508, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(listadeClientes2, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(376, 376, 376))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(crear2)
+                        .addGap(387, 387, 387))))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(listadeClientes2)
+                .addGap(26, 26, 26)
+                .addComponent(crear2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         fondo.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         fondo.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        fondo.setLayer(jPanel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout fondoLayout = new javax.swing.GroupLayout(fondo);
         fondo.setLayout(fondoLayout);
         fondoLayout.setHorizontalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoLayout.createSequentialGroup()
-                .addContainerGap(200, Short.MAX_VALUE)
-                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(180, Short.MAX_VALUE)
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(676, 676, 676))
         );
         fondoLayout.setVerticalGroup(
@@ -181,116 +202,10 @@ public class VistaAdministrador extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(548, Short.MAX_VALUE))
+                .addGap(43, 43, 43)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(284, Short.MAX_VALUE))
         );
-
-        fileMenu.setMnemonic('f');
-        fileMenu.setText("ADMINISTRAR PUESTOS");
-
-        openMenuItem.setMnemonic('o');
-        openMenuItem.setText("AGRAGAR SECRETARIAS");
-        openMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                openMenuItemActionPerformed(evt);
-            }
-        });
-        fileMenu.add(openMenuItem);
-
-        saveMenuItem.setMnemonic('s');
-        saveMenuItem.setText("AGRAGAR ADMINISTRADORES");
-        fileMenu.add(saveMenuItem);
-
-        saveAsMenuItem.setMnemonic('a');
-        saveAsMenuItem.setText("Save As ...");
-        saveAsMenuItem.setDisplayedMnemonicIndex(5);
-        fileMenu.add(saveAsMenuItem);
-
-        menuBar.add(fileMenu);
-
-        editMenu.setMnemonic('e');
-        editMenu.setText("PRESTAMOS");
-
-        cutMenuItem.setMnemonic('t');
-        cutMenuItem.setText("VALIDAR RECURSOS");
-        editMenu.add(cutMenuItem);
-
-        copyMenuItem.setMnemonic('y');
-        copyMenuItem.setText("APROBAR PRESTAMOS");
-        copyMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                copyMenuItemActionPerformed(evt);
-            }
-        });
-        editMenu.add(copyMenuItem);
-
-        pasteMenuItem.setMnemonic('p');
-        pasteMenuItem.setText("Paste");
-        editMenu.add(pasteMenuItem);
-
-        deleteMenuItem.setMnemonic('d');
-        deleteMenuItem.setText("Delete");
-        editMenu.add(deleteMenuItem);
-
-        menuBar.add(editMenu);
-
-        fileMenu1.setMnemonic('f');
-        fileMenu1.setText("BANCO");
-
-        openMenuItem1.setMnemonic('o');
-        openMenuItem1.setText("CREAR");
-        openMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                openMenuItem1ActionPerformed(evt);
-            }
-        });
-        fileMenu1.add(openMenuItem1);
-
-        saveMenuItem1.setMnemonic('s');
-        saveMenuItem1.setText("EDITAR");
-        saveMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                saveMenuItem1ActionPerformed(evt);
-            }
-        });
-        fileMenu1.add(saveMenuItem1);
-
-        saveAsMenuItem1.setMnemonic('a');
-        saveAsMenuItem1.setText("LISTAR");
-        saveAsMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                saveAsMenuItem1ActionPerformed(evt);
-            }
-        });
-        fileMenu1.add(saveAsMenuItem1);
-
-        exitMenuItem.setMnemonic('x');
-        exitMenuItem.setText("BUSCAR");
-        exitMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exitMenuItemActionPerformed(evt);
-            }
-        });
-        fileMenu1.add(exitMenuItem);
-
-        exitMenuItem1.setMnemonic('x');
-        exitMenuItem1.setText("ELIMINAR");
-        exitMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exitMenuItem1ActionPerformed(evt);
-            }
-        });
-        fileMenu1.add(exitMenuItem1);
-
-        menuBar.add(fileMenu1);
-
-        helpMenu.setMnemonic('h');
-        helpMenu.setText("SALIR");
-        helpMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                helpMenuActionPerformed(evt);
-            }
-        });
-        menuBar.add(helpMenu);
 
         setJMenuBar(menuBar);
 
@@ -313,48 +228,6 @@ public class VistaAdministrador extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void helpMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpMenuActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_helpMenuActionPerformed
-
-    private void openMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openMenuItem1ActionPerformed
-        CrearBanco cu = new CrearBanco();
-        fondo.add(cu);
-        cu.setVisible(true);
-    }//GEN-LAST:event_openMenuItem1ActionPerformed
-
-    private void saveMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveMenuItem1ActionPerformed
-        EditarBanco edu = new EditarBanco();
-        fondo.add(edu);
-        edu.setVisible(true);
-    }//GEN-LAST:event_saveMenuItem1ActionPerformed
-
-    private void saveAsMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAsMenuItem1ActionPerformed
-        ListarBancos lu = new ListarBancos();
-        fondo.add(lu);
-        lu.setVisible(true);
-    }//GEN-LAST:event_saveAsMenuItem1ActionPerformed
-
-    private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
-        BuscarBanco bu = new BuscarBanco();
-        fondo.add(bu);
-        bu.setVisible(true);
-    }//GEN-LAST:event_exitMenuItemActionPerformed
-
-    private void exitMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItem1ActionPerformed
-        EliminarBanco eu = new EliminarBanco();
-        fondo.add(eu);
-        eu.setVisible(true);
-    }//GEN-LAST:event_exitMenuItem1ActionPerformed
-
-    private void openMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openMenuItemActionPerformed
-        
-    }//GEN-LAST:event_openMenuItemActionPerformed
-
-    private void copyMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_copyMenuItemActionPerformed
-        System.out.println("esto es el calculo");
-    }//GEN-LAST:event_copyMenuItemActionPerformed
-
     private void crearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearActionPerformed
         AgregarSecretarias as = new AgregarSecretarias();
         fondo.add(as);
@@ -376,6 +249,12 @@ public class VistaAdministrador extends javax.swing.JFrame {
     private void editar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editar1ActionPerformed
         
     }//GEN-LAST:event_editar1ActionPerformed
+
+    private void crear2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crear2ActionPerformed
+        EditarBanco edu = new EditarBanco();
+        fondo.add(edu);
+        edu.setVisible(true);
+    }//GEN-LAST:event_crear2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -413,32 +292,19 @@ public class VistaAdministrador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem copyMenuItem;
     private javax.swing.JButton crear;
     private javax.swing.JButton crear1;
-    private javax.swing.JMenuItem cutMenuItem;
-    private javax.swing.JMenuItem deleteMenuItem;
-    private javax.swing.JMenu editMenu;
+    private javax.swing.JButton crear2;
     private javax.swing.JButton editar;
     private javax.swing.JButton editar1;
-    private javax.swing.JMenuItem exitMenuItem;
-    private javax.swing.JMenuItem exitMenuItem1;
-    private javax.swing.JMenu fileMenu;
-    private javax.swing.JMenu fileMenu1;
     private javax.swing.JDesktopPane fondo;
-    private javax.swing.JMenu helpMenu;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel listadeClientes;
     private javax.swing.JLabel listadeClientes1;
+    private javax.swing.JLabel listadeClientes2;
     private javax.swing.JMenuBar menuBar;
-    private javax.swing.JMenuItem openMenuItem;
-    private javax.swing.JMenuItem openMenuItem1;
-    private javax.swing.JMenuItem pasteMenuItem;
-    private javax.swing.JMenuItem saveAsMenuItem;
-    private javax.swing.JMenuItem saveAsMenuItem1;
-    private javax.swing.JMenuItem saveMenuItem;
-    private javax.swing.JMenuItem saveMenuItem1;
     // End of variables declaration//GEN-END:variables
 
 }
