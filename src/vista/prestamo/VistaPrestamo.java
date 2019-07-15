@@ -63,22 +63,22 @@ public class VistaPrestamo extends javax.swing.JInternalFrame {
      */
     public VistaPrestamo() {
         initComponents();
-
+        
         modelotabla = new DefaultTableModel();
         tipom = "";
-
+        
         Date date = new Date();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         txtFecha.setText(dateFormat.format(date));
-
+        
         comboMeses.removeAll();
         comboMeses.addItem("Seleccione");
         for (int i = 1; i < 101; i++) {
             comboMeses.addItem(i + "");
         }
-
+        
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -581,7 +581,7 @@ public class VistaPrestamo extends javax.swing.JInternalFrame {
                     txtCliente.setText("");
                     txtTelefono.setText("");
                     txtDireccion.setText("");
-
+                    
                 }
             } else {
                 JOptionPane.showMessageDialog(this, "DATOS INGRESADOS INCORRECTOS", "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -625,22 +625,22 @@ public class VistaPrestamo extends javax.swing.JInternalFrame {
         if (txtMeses.getText().equals("")) {
             bandera = false;
         }
-
+        
         if (comboMeses.getSelectedIndex() == 0) {
             bandera = false;
         }
-
+        
         if (bandera) {
             double catidad = Integer.parseInt(txtCantidad.getText());
             int meses = Integer.parseInt(txtMeses.getText());
             double iva = (int) comboMeses.getSelectedIndex();
-
+            
             double cuota = catidad / meses;
             double interes = catidad * (iva * 0.01);
-
+            
             Date date = new Date();
             DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-
+            
             DefaultTableModel model = (DefaultTableModel) tabla.getModel();
             model.insertRow(0, new Object[]{0, 0, 0, 0, catidad, dateFormat.format(date)});
             for (int i = 1; i < meses + 1; i++) {
@@ -668,11 +668,11 @@ public class VistaPrestamo extends javax.swing.JInternalFrame {
         if (txtMeses.getText().equals("")) {
             bandera = false;
         }
-
+        
         if (comboMeses.getSelectedIndex() == 0) {
             bandera = false;
         }
-
+        
         if (bandera) {
             double catidad = Integer.parseInt(txtCantidad.getText());
             int meses = Integer.parseInt(txtMeses.getText());
@@ -682,7 +682,7 @@ public class VistaPrestamo extends javax.swing.JInternalFrame {
             ControladorPrestamo controladorPrestamo = new ControladorPrestamo();
             controladorPrestamo.createPrestamo(p);
             btnGuardar.setEnabled(false);
-
+            
             p = controladorPrestamo.MaxId().get(0);
             Date date = new Date();
             DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -696,11 +696,22 @@ public class VistaPrestamo extends javax.swing.JInternalFrame {
                 ControladorAmortizacion controladorAmortizacion = new ControladorAmortizacion();
                 controladorAmortizacion.Crear(a);
             }
+            JOptionPane.showMessageDialog(this, "DATOS INGRESADOS CORRECTAMENTE");
+            btnGuardar.setEnabled(false);
+            limpiarTabla();
+            txtCedula.setText("");
+            txtCliente.setText("");
+            txtTelefono.setText("");
+            txtDireccion.setText("");
+            txtCliente.setText("");
+            txtCantidad.setText("");
+            txtMeses.setText("");
+            comboMeses.setSelectedIndex(0);
         } else {
             JOptionPane.showMessageDialog(this, "Exiten errores en los campos!! \nVerfique los datos ingresados", "PRESTAMO", JOptionPane.ERROR_MESSAGE);
             btnGuardar.setEnabled(false);
         }
-
+        
 
     }//GEN-LAST:event_btnGuardarActionPerformed
     public void limpiarTabla() {
