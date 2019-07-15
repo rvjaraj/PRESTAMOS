@@ -7,6 +7,8 @@
     <class>modelo.Secretaria</class>
     <class>modelo.Banco</class>
     <class>modelo.Fundacion</class>
+    <class>modelo.Prestamo</class>
+    <class>modelo.Amortizacion</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/prestamo?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

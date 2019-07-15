@@ -6,7 +6,9 @@
 package modelo;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,8 +16,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -31,6 +35,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Usuario.findSecre", query = "SELECT t1 FROM Usuario t1 WHERE NOT EXISTS (SELECT NULL FROM Secretaria t2 WHERE t2.idUsuario.idUsuario = t1.idUsuario)")
     , @NamedQuery(name = "Usuario.findAdmin", query = "SELECT t1 FROM Usuario t1 WHERE NOT EXISTS (SELECT NULL FROM Administrador t2 WHERE t2.idUsuario.idUsuario = t1.idUsuario)")
     , @NamedQuery(name = "Usuario.findByIdUsuario", query = "SELECT u FROM Usuario u WHERE u.idUsuario = :idUsuario")
+    , @NamedQuery(name = "Usuario.findByCedula2", query = "SELECT u FROM Usuario u WHERE u.prestamo = 'SI' and u.cedula = :cedula")
     , @NamedQuery(name = "Usuario.findByCedula", query = "SELECT u FROM Usuario u WHERE u.cedula = :cedula")
     , @NamedQuery(name = "Usuario.findByNombre", query = "SELECT u FROM Usuario u WHERE u.nombre = :nombre")
     , @NamedQuery(name = "Usuario.findByApellido", query = "SELECT u FROM Usuario u WHERE u.apellido = :apellido")
@@ -39,6 +44,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Usuario.findByContracenia", query = "SELECT u FROM Usuario u WHERE u.contracenia = :contracenia")
     , @NamedQuery(name = "Usuario.findByPrestamo", query = "SELECT u FROM Usuario u WHERE u.prestamo = :prestamo")})
 public class Usuario implements Serializable {
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
+    private Collection<Prestamo> prestamoCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -172,6 +180,15 @@ public class Usuario implements Serializable {
     @Override
     public String toString() {
         return "modelo.Usuario[ idUsuario=" + idUsuario + " ]";
+    }
+
+    @XmlTransient
+    public Collection<Prestamo> getPrestamoCollection() {
+        return prestamoCollection;
+    }
+
+    public void setPrestamoCollection(Collection<Prestamo> prestamoCollection) {
+        this.prestamoCollection = prestamoCollection;
     }
 
 }

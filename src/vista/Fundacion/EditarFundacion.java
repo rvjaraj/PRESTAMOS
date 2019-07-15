@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vista.Banco;
+package vista.Fundacion;
 
 import controlador.ControladorFundacion;
 import vista.Cliente.*;
@@ -17,7 +17,7 @@ import modelo.Fundacion;
  *
  * @author vinic
  */
-public class EditarBanco extends javax.swing.JInternalFrame {
+public class EditarFundacion extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Crear
@@ -25,7 +25,7 @@ public class EditarBanco extends javax.swing.JInternalFrame {
     private ControladorFundacion controlador;
     private int codAux;
 
-    public EditarBanco() {
+    public EditarFundacion() {
         initComponents();
         controlador = new ControladorFundacion();
         

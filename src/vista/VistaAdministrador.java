@@ -5,8 +5,9 @@
  */
 package vista;
 
-import vista.Banco.EditarBanco;
+import vista.Fundacion.EditarFundacion;
 import vista.Cliente.BuscarUsuario;
+import vista.prestamo.Prestamo;
 import vista.puestos.AgregarAdministradores;
 import vista.puestos.AgregarSecretarias;
 import vista.puestos.AprobarPrestamos;
@@ -247,11 +248,13 @@ public class VistaAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_crear1ActionPerformed
 
     private void editar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editar1ActionPerformed
-        
+        Prestamo edu = new Prestamo();
+        fondo.add(edu);
+        edu.setVisible(true); 
     }//GEN-LAST:event_editar1ActionPerformed
 
     private void crear2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crear2ActionPerformed
-        EditarBanco edu = new EditarBanco();
+        EditarFundacion edu = new EditarFundacion();
         fondo.add(edu);
         edu.setVisible(true);
     }//GEN-LAST:event_crear2ActionPerformed

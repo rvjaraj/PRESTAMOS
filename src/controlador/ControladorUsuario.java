@@ -79,6 +79,18 @@ public class ControladorUsuario {
         }
         return u;
     }
+    
+    public Usuario findByCedula2(String ced) {
+        TypedQuery<Usuario> consultaUsuario = em.createNamedQuery("Usuario.findByCedula2", Usuario.class);
+        consultaUsuario.setParameter("cedula", ced);
+        Usuario u;
+        try{
+             u = consultaUsuario.getSingleResult();
+        }catch(Exception e){
+            u = null;
+        }
+        return u;
+    }
 
     public boolean eliminar(int id) {
         try {
