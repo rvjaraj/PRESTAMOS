@@ -7,6 +7,7 @@ package modelo;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,6 +19,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -34,7 +37,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Amortizacion.findByInteres", query = "SELECT a FROM Amortizacion a WHERE a.interes = :interes")
     , @NamedQuery(name = "Amortizacion.findByCapitalSin", query = "SELECT a FROM Amortizacion a WHERE a.capitalSin = :capitalSin")
     , @NamedQuery(name = "Amortizacion.findByCouta", query = "SELECT a FROM Amortizacion a WHERE a.couta = :couta")
-    , @NamedQuery(name = "Amortizacion.findByDeuda", query = "SELECT a FROM Amortizacion a WHERE a.deuda = :deuda")})
+    , @NamedQuery(name = "Amortizacion.findByDeuda", query = "SELECT a FROM Amortizacion a WHERE a.deuda = :deuda")
+    , @NamedQuery(name = "Amortizacion.findByEstado", query = "SELECT a FROM Amortizacion a WHERE a.estado = :estado")
+    , @NamedQuery(name = "Amortizacion.findByFecha", query = "SELECT a FROM Amortizacion a WHERE a.fecha = :fecha")})
 public class Amortizacion implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -58,6 +63,13 @@ public class Amortizacion implements Serializable {
     @Basic(optional = false)
     @Column(name = "deuda")
     private BigDecimal deuda;
+    @Basic(optional = false)
+    @Column(name = "estado")
+    private String estado;
+    @Basic(optional = false)
+    @Column(name = "fecha")
+    @Temporal(TemporalType.DATE)
+    private Date fecha;
     @JoinColumn(name = "idPrestamo", referencedColumnName = "idPrestamo")
     @ManyToOne(optional = false)
     private Prestamo idPrestamo;
@@ -69,12 +81,26 @@ public class Amortizacion implements Serializable {
         this.idAmortizacion = idAmortizacion;
     }
 
-    public Amortizacion(Integer idAmortizacion, int periodo, BigDecimal interes, BigDecimal couta, BigDecimal deuda) {
+    public Amortizacion(Integer idAmortizacion, int periodo, BigDecimal interes, BigDecimal couta, BigDecimal deuda, String estado, Date fecha) {
         this.idAmortizacion = idAmortizacion;
         this.periodo = periodo;
         this.interes = interes;
         this.couta = couta;
         this.deuda = deuda;
+        this.estado = estado;
+        this.fecha = fecha;
+    }
+
+    public Amortizacion(Integer idAmortizacion, int periodo, BigDecimal interes, BigDecimal capitalSin, BigDecimal couta, BigDecimal deuda, String estado, Date fecha, Prestamo idPrestamo) {
+        this.idAmortizacion = idAmortizacion;
+        this.periodo = periodo;
+        this.interes = interes;
+        this.capitalSin = capitalSin;
+        this.couta = couta;
+        this.deuda = deuda;
+        this.estado = estado;
+        this.fecha = fecha;
+        this.idPrestamo = idPrestamo;
     }
 
     public Integer getIdAmortizacion() {
@@ -123,6 +149,22 @@ public class Amortizacion implements Serializable {
 
     public void setDeuda(BigDecimal deuda) {
         this.deuda = deuda;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
     }
 
     public Prestamo getIdPrestamo() {

@@ -431,10 +431,12 @@
                               <Component id="telefono2" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="comboMeses" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="telefono1" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="telefono3" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="comboMeses" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="telefono3" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                           <EmptySpace pref="38" max="32767" attributes="0"/>
                       </Group>

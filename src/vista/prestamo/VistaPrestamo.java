@@ -5,6 +5,9 @@
  */
 package vista.prestamo;
 
+import controlador.ControladorAdministrador;
+import controlador.ControladorAmortizacion;
+import controlador.ControladorPrestamo;
 import controlador.ControladorUsuario;
 import java.awt.Color;
 import java.awt.Image;
@@ -15,6 +18,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -31,6 +35,8 @@ import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import modelo.Amortizacion;
+import modelo.Prestamo;
 import modelo.Usuario;
 
 /**
@@ -38,7 +44,7 @@ import modelo.Usuario;
  * @author VINICIO
  *
  */
-public class Prestamo extends javax.swing.JInternalFrame {
+public class VistaPrestamo extends javax.swing.JInternalFrame {
 
     /**
      * Atributos de la clase
@@ -55,7 +61,7 @@ public class Prestamo extends javax.swing.JInternalFrame {
      *
      * @param controladorArticulo : clase controladora de Articulo
      */
-    public Prestamo() {
+    public VistaPrestamo() {
         initComponents();
 
         modelotabla = new DefaultTableModel();
@@ -350,10 +356,11 @@ public class Prestamo extends javax.swing.JInternalFrame {
                     .addComponent(txtMeses, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(telefono2))
                 .addGap(13, 13, 13)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(comboMeses, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(telefono1)
-                    .addComponent(telefono3))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(comboMeses, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(telefono3)))
                 .addContainerGap(38, Short.MAX_VALUE))
         );
 
@@ -607,6 +614,7 @@ public class Prestamo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtMesesKeyTyped
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        limpiarTabla();
         boolean bandera = true;
         if (txtCliente.getText().equals("")) {
             bandera = false;
@@ -624,7 +632,7 @@ public class Prestamo extends javax.swing.JInternalFrame {
 
         if (bandera) {
             double catidad = Integer.parseInt(txtCantidad.getText());
-            double meses = Integer.parseInt(txtMeses.getText());
+            int meses = Integer.parseInt(txtMeses.getText());
             double iva = (int) comboMeses.getSelectedIndex();
 
             double cuota = catidad / meses;
@@ -632,7 +640,6 @@ public class Prestamo extends javax.swing.JInternalFrame {
 
             Date date = new Date();
             DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-            
 
             DefaultTableModel model = (DefaultTableModel) tabla.getModel();
             model.insertRow(0, new Object[]{0, 0, 0, 0, catidad, dateFormat.format(date)});
@@ -651,9 +658,57 @@ public class Prestamo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnGuardarActionPerformed
+        boolean bandera = true;
+        if (txtCliente.getText().equals("")) {
+            bandera = false;
+        }
+        if (txtCantidad.getText().equals("")) {
+            bandera = false;
+        }
+        if (txtMeses.getText().equals("")) {
+            bandera = false;
+        }
 
+        if (comboMeses.getSelectedIndex() == 0) {
+            bandera = false;
+        }
+
+        if (bandera) {
+            double catidad = Integer.parseInt(txtCantidad.getText());
+            int meses = Integer.parseInt(txtMeses.getText());
+            int iva = (int) comboMeses.getSelectedIndex();
+            ControladorUsuario controladorUsuario = new ControladorUsuario();
+            Prestamo p = new Prestamo(0, BigDecimal.valueOf(catidad), meses, iva, controladorUsuario.findByCedula(txtCedula.getText()));
+            ControladorPrestamo controladorPrestamo = new ControladorPrestamo();
+            controladorPrestamo.createPrestamo(p);
+            btnGuardar.setEnabled(false);
+
+            p = controladorPrestamo.MaxId().get(0);
+            Date date = new Date();
+            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            for (int i = 1; i < tabla.getRowCount(); i++) {
+                date.setMonth(date.getMonth() + 1);
+                double interes = (double) tabla.getValueAt(i, 1);
+                double cuota = (double) tabla.getValueAt(i, 2);
+                double capsin = (double) tabla.getValueAt(i, 3);
+                double deuda = (double) tabla.getValueAt(i, 3);
+                Amortizacion a = new Amortizacion(0, 1, BigDecimal.valueOf(interes), BigDecimal.valueOf(capsin), BigDecimal.valueOf(cuota), BigDecimal.valueOf(deuda), "POR PAGAR", date, p);
+                ControladorAmortizacion controladorAmortizacion = new ControladorAmortizacion();
+                controladorAmortizacion.Crear(a);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Exiten errores en los campos!! \nVerfique los datos ingresados", "PRESTAMO", JOptionPane.ERROR_MESSAGE);
+            btnGuardar.setEnabled(false);
+        }
+
+
+    }//GEN-LAST:event_btnGuardarActionPerformed
+    public void limpiarTabla() {
+        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+        while (modelo.getRowCount() > 0) {
+            modelo.removeRow(0);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;

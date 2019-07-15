@@ -33,11 +33,15 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Prestamo.findAll", query = "SELECT p FROM Prestamo p")
+    ,@NamedQuery(name = "Prestamo.MaxId", query = "SELECT p FROM Prestamo p WHERE p.idPrestamo = (SELECT MAX(a.idPrestamo) FROM Prestamo a)")
     , @NamedQuery(name = "Prestamo.findByIdPrestamo", query = "SELECT p FROM Prestamo p WHERE p.idPrestamo = :idPrestamo")
     , @NamedQuery(name = "Prestamo.findByCantidad", query = "SELECT p FROM Prestamo p WHERE p.cantidad = :cantidad")
     , @NamedQuery(name = "Prestamo.findByMeses", query = "SELECT p FROM Prestamo p WHERE p.meses = :meses")
     , @NamedQuery(name = "Prestamo.findByInteres", query = "SELECT p FROM Prestamo p WHERE p.interes = :interes")})
 public class Prestamo implements Serializable {
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPrestamo")
+    private Collection<Amortizacion> amortizacionCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -54,12 +58,10 @@ public class Prestamo implements Serializable {
     private int meses;
     @Basic(optional = false)
     @Column(name = "interes")
-    private String interes;
+    private int interes;
     @JoinColumn(name = "idUsuario", referencedColumnName = "idUsuario")
     @ManyToOne(optional = false)
     private Usuario idUsuario;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPrestamo")
-    private Collection<Amortizacion> amortizacionCollection;
 
     public Prestamo() {
     }
@@ -68,11 +70,19 @@ public class Prestamo implements Serializable {
         this.idPrestamo = idPrestamo;
     }
 
-    public Prestamo(Integer idPrestamo, BigDecimal cantidad, int meses, String interes) {
+    public Prestamo(Integer idPrestamo, BigDecimal cantidad, int meses, int interes) {
         this.idPrestamo = idPrestamo;
         this.cantidad = cantidad;
         this.meses = meses;
         this.interes = interes;
+    }
+
+    public Prestamo(Integer idPrestamo, BigDecimal cantidad, int meses, int interes, Usuario idUsuario) {
+        this.idPrestamo = idPrestamo;
+        this.cantidad = cantidad;
+        this.meses = meses;
+        this.interes = interes;
+        this.idUsuario = idUsuario;
     }
 
     public Integer getIdPrestamo() {
@@ -99,11 +109,11 @@ public class Prestamo implements Serializable {
         this.meses = meses;
     }
 
-    public String getInteres() {
+    public int getInteres() {
         return interes;
     }
 
-    public void setInteres(String interes) {
+    public void setInteres(int interes) {
         this.interes = interes;
     }
 
@@ -113,15 +123,6 @@ public class Prestamo implements Serializable {
 
     public void setIdUsuario(Usuario idUsuario) {
         this.idUsuario = idUsuario;
-    }
-
-    @XmlTransient
-    public Collection<Amortizacion> getAmortizacionCollection() {
-        return amortizacionCollection;
-    }
-
-    public void setAmortizacionCollection(Collection<Amortizacion> amortizacionCollection) {
-        this.amortizacionCollection = amortizacionCollection;
     }
 
     @Override
@@ -148,5 +149,14 @@ public class Prestamo implements Serializable {
     public String toString() {
         return "modelo.Prestamo[ idPrestamo=" + idPrestamo + " ]";
     }
-    
+
+    @XmlTransient
+    public Collection<Amortizacion> getAmortizacionCollection() {
+        return amortizacionCollection;
+    }
+
+    public void setAmortizacionCollection(Collection<Amortizacion> amortizacionCollection) {
+        this.amortizacionCollection = amortizacionCollection;
+    }
+
 }
