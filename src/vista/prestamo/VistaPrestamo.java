@@ -692,7 +692,7 @@ public class VistaPrestamo extends javax.swing.JInternalFrame {
                 double cuota = (double) tabla.getValueAt(i, 2);
                 double capsin = (double) tabla.getValueAt(i, 3);
                 double deuda = (double) tabla.getValueAt(i, 3);
-                Amortizacion a = new Amortizacion(0, 1, BigDecimal.valueOf(interes), BigDecimal.valueOf(capsin), BigDecimal.valueOf(cuota), BigDecimal.valueOf(deuda), "POR PAGAR", date, p);
+                Amortizacion a = new Amortizacion(0, i, BigDecimal.valueOf(interes), BigDecimal.valueOf(capsin), BigDecimal.valueOf(cuota), BigDecimal.valueOf(deuda), "POR PAGAR", date, p);
                 ControladorAmortizacion controladorAmortizacion = new ControladorAmortizacion();
                 controladorAmortizacion.Crear(a);
             }

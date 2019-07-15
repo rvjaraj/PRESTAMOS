@@ -42,4 +42,14 @@ public class ControladorLogin {
         }
         return false;
     }
+    
+     public boolean loginAdministrador(String cedula, String contra) {
+        Query q = em.createQuery("SELECT u FROM Usuario u, Administrador s WHERE u.cedula = '"+cedula+"' AND u.contracenia = '"+contra+"' AND u.idUsuario = s.idUsuario.idUsuario");
+        List<Usuario> lis = q.getResultList();
+        if(lis.size() == 1){
+            System.out.println(lis.get(0).getNombre());
+            return true;
+        }
+        return false;
+    }
 }

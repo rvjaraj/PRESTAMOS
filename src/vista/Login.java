@@ -237,6 +237,19 @@ public class Login extends javax.swing.JFrame {
                     break;
                 case "ADMINISTRADOR":
                     pasar = true;
+                    pasar = true;
+                    ControladorLogin controlador2 = new ControladorLogin();
+                    boolean res2 = controlador2.loginAdministrador(txtCedula.getText(), txtContra.getText());
+                    if (res2) {
+                        JOptionPane.showMessageDialog(this, "ACCEDE COMO ADMINISTRADOR");
+                        VistaAdministrador vu = new VistaAdministrador();
+                        String[] args = null;
+                        vu.main(args);
+                        pasar = false;
+                        this.dispose();
+
+                    }
+                    
                     if (pasar) {
                         if (txtCedula.getText().equals(cedulaRoot)) {
                             if (txtContra.getText().equals(contraRoot)) {
