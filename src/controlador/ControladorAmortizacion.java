@@ -11,6 +11,7 @@ import javax.persistence.EntityNotFoundException;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import modelo.Amortizacion;
+import modelo.Prestamo;
 
 /**
  *
@@ -71,5 +72,11 @@ public class ControladorAmortizacion {
             em.getTransaction().rollback();
             return false;
         }
+    }
+    
+    public List<Amortizacion> listar(int id) {
+        Query q = em.createQuery("SELECT u FROM Amortizacion u WHERE u.idPrestamo.idPrestamo = "+id);
+        List<Amortizacion> lis = q.getResultList();
+        return lis;
     }
 }

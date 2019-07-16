@@ -7,6 +7,7 @@ package vista.prestamo;
 
 import controlador.ControladorAdministrador;
 import controlador.ControladorAmortizacion;
+import controlador.ControladorFundacion;
 import controlador.ControladorPrestamo;
 import controlador.ControladorUsuario;
 import java.awt.Color;
@@ -36,6 +37,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Amortizacion;
+import modelo.Fundacion;
 import modelo.Prestamo;
 import modelo.Usuario;
 
@@ -63,22 +65,23 @@ public class VistaPrestamo extends javax.swing.JInternalFrame {
      */
     public VistaPrestamo() {
         initComponents();
-        
+
         modelotabla = new DefaultTableModel();
         tipom = "";
-        
+
         Date date = new Date();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         txtFecha.setText(dateFormat.format(date));
-        
+
         comboMeses.removeAll();
         comboMeses.addItem("Seleccione");
+        comboMeses.addItem("6.25");
         for (int i = 1; i < 101; i++) {
             comboMeses.addItem(i + "");
         }
-        
+
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -114,13 +117,13 @@ public class VistaPrestamo extends javax.swing.JInternalFrame {
         telefono3 = new javax.swing.JLabel();
         btnActualizar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel22 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        txtBuscarM = new javax.swing.JTextField();
-        buscar4 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jLabel23 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        detalle = new javax.swing.JTable();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        prestamo = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
@@ -293,6 +296,9 @@ public class VistaPrestamo extends javax.swing.JInternalFrame {
             }
         ));
         jScrollPane1.setViewportView(tabla);
+        if (tabla.getColumnModel().getColumnCount() > 0) {
+            tabla.getColumnModel().getColumn(5).setHeaderValue("fecha");
+        }
 
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -432,62 +438,37 @@ public class VistaPrestamo extends javax.swing.JInternalFrame {
 
         panelCrud.addTab("CREAR", jPanel1);
 
-        jLabel22.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
-        jLabel22.setText("MODIFICAR PRESTAMO");
-
-        jLabel12.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
-        jLabel12.setText("INGRESE CODIGO:  ");
-
-        txtBuscarM.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtBuscarMKeyTyped(evt);
-            }
-        });
-
-        buscar4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar.png"))); // NOI18N
-        buscar4.setText("BUSCAR");
-        buscar4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscar4ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel22)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(jLabel12)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtBuscarM, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(buscar4)
-                        .addContainerGap(589, Short.MAX_VALUE))))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel22)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(txtBuscarM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buscar4))
-                .addContainerGap(522, Short.MAX_VALUE))
-        );
-
-        panelCrud.addTab("MODIFICAR", jPanel4);
-
         jLabel23.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jLabel23.setText("LISTA DE PRESTAMOS");
+
+        jLabel11.setFont(new java.awt.Font("Verdana", 3, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 0, 255));
+        jLabel11.setText("DETALLE");
+
+        detalle.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Periodo", "Interes", "Cuota sin interes", "Cuota", "Deuda", "Estado", "Fecha"
+            }
+        ));
+        jScrollPane2.setViewportView(detalle);
+
+        prestamo.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "CANTIDAD PRESTADA", "MESES", "INTERES", "USUARIO"
+            }
+        ));
+        prestamo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                prestamoMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(prestamo);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -497,12 +478,28 @@ public class VistaPrestamo extends javax.swing.JInternalFrame {
                 .addGap(183, 183, 183)
                 .addComponent(jLabel23)
                 .addContainerGap(672, Short.MAX_VALUE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 919, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(95, 95, 95)
+                .addComponent(jLabel11)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addComponent(jLabel23)
-                .addGap(0, 583, Short.MAX_VALUE))
+                .addGap(37, 37, 37)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(jLabel11)
+                .addGap(38, 38, 38)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
         panelCrud.addTab("LISTA", jPanel6);
@@ -521,25 +518,24 @@ public class VistaPrestamo extends javax.swing.JInternalFrame {
 
     private void cerrado(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_cerrado
     }//GEN-LAST:event_cerrado
+    public void llenarTabla() {
+        ControladorPrestamo contp = new ControladorPrestamo();
+        List<Prestamo> pres = contp.findAll();
 
+        DefaultTableModel model = (DefaultTableModel) prestamo.getModel();
+        int index = 0;
+        for (Prestamo u : pres) {
+            model.insertRow(index, new Object[]{u.getIdPrestamo(), u.getCantidad(), u.getMeses() + " "+ u.getInteres(), (u.getIdUsuario().getNombre() +" " + u.getIdUsuario().getApellido())});
+            index++;
+        }
+
+    }
     private void panelCrudStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_panelCrudStateChanged
         int n = panelCrud.getSelectedIndex();
-        if (n == 3) {
+        if (n == 2) {
+            llenarTabla();
         }
     }//GEN-LAST:event_panelCrudStateChanged
-
-    private void buscar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscar4ActionPerformed
-
-    }//GEN-LAST:event_buscar4ActionPerformed
-
-    private void txtBuscarMKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarMKeyTyped
-        if (evt.getKeyCode() != KeyEvent.VK_DELETE) {
-            if (evt.getKeyChar() < '0' || evt.getKeyChar() > '9') {
-                evt.consume();
-            }
-        }
-
-    }//GEN-LAST:event_txtBuscarMKeyTyped
 
     private void txtClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtClienteActionPerformed
         // TODO add your handling code here:
@@ -581,7 +577,7 @@ public class VistaPrestamo extends javax.swing.JInternalFrame {
                     txtCliente.setText("");
                     txtTelefono.setText("");
                     txtDireccion.setText("");
-                    
+
                 }
             } else {
                 JOptionPane.showMessageDialog(this, "DATOS INGRESADOS INCORRECTOS", "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -625,22 +621,26 @@ public class VistaPrestamo extends javax.swing.JInternalFrame {
         if (txtMeses.getText().equals("")) {
             bandera = false;
         }
-        
+
         if (comboMeses.getSelectedIndex() == 0) {
             bandera = false;
         }
-        
+
         if (bandera) {
             double catidad = Integer.parseInt(txtCantidad.getText());
-            int meses = Integer.parseInt(txtMeses.getText());
+            ControladorFundacion conFun = new ControladorFundacion();
+            Fundacion f  = conFun.findByID(1);
+            BigDecimal valor = f.getValorNeto();
+            if(catidad < valor.doubleValue()){
+                int meses = Integer.parseInt(txtMeses.getText());
             double iva = (int) comboMeses.getSelectedIndex();
-            
+
             double cuota = catidad / meses;
             double interes = catidad * (iva * 0.01);
-            
+
             Date date = new Date();
             DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-            
+
             DefaultTableModel model = (DefaultTableModel) tabla.getModel();
             model.insertRow(0, new Object[]{0, 0, 0, 0, catidad, dateFormat.format(date)});
             for (int i = 1; i < meses + 1; i++) {
@@ -650,6 +650,11 @@ public class VistaPrestamo extends javax.swing.JInternalFrame {
                 model.insertRow(i, new Object[]{i, interes, cuota, interes + cuota, catidad - cuota, dateFormat.format(date)});
             }
             btnGuardar.setEnabled(true);
+            }else{
+                JOptionPane.showMessageDialog(this, "La Fundacion no cuenta con esa catidad para prestar");
+                btnGuardar.setEnabled(false);
+            }
+            
         } else {
             JOptionPane.showMessageDialog(this, "Exiten errores en los campos!! \nVerfique los datos ingresados", "PRESTAMO", JOptionPane.ERROR_MESSAGE);
             btnGuardar.setEnabled(false);
@@ -668,11 +673,11 @@ public class VistaPrestamo extends javax.swing.JInternalFrame {
         if (txtMeses.getText().equals("")) {
             bandera = false;
         }
-        
+
         if (comboMeses.getSelectedIndex() == 0) {
             bandera = false;
         }
-        
+
         if (bandera) {
             double catidad = Integer.parseInt(txtCantidad.getText());
             int meses = Integer.parseInt(txtMeses.getText());
@@ -682,7 +687,7 @@ public class VistaPrestamo extends javax.swing.JInternalFrame {
             ControladorPrestamo controladorPrestamo = new ControladorPrestamo();
             controladorPrestamo.createPrestamo(p);
             btnGuardar.setEnabled(false);
-            
+
             p = controladorPrestamo.MaxId().get(0);
             Date date = new Date();
             DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -696,6 +701,12 @@ public class VistaPrestamo extends javax.swing.JInternalFrame {
                 ControladorAmortizacion controladorAmortizacion = new ControladorAmortizacion();
                 controladorAmortizacion.Crear(a);
             }
+            ControladorFundacion conFun = new ControladorFundacion();
+            Fundacion f  = conFun.findByID(1);
+            double valor = f.getValorNeto().doubleValue();
+            double resta = valor - catidad;
+            f.setValorNeto(BigDecimal.valueOf(resta));
+            conFun.edit(f);
             JOptionPane.showMessageDialog(this, "DATOS INGRESADOS CORRECTAMENTE");
             btnGuardar.setEnabled(false);
             limpiarTabla();
@@ -711,11 +722,32 @@ public class VistaPrestamo extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Exiten errores en los campos!! \nVerfique los datos ingresados", "PRESTAMO", JOptionPane.ERROR_MESSAGE);
             btnGuardar.setEnabled(false);
         }
-        
+
 
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void prestamoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prestamoMouseClicked
+        limpiarTablaDetalle();
+        int id = (int) prestamo.getValueAt(prestamo.getSelectedRow(), 0);
+        ControladorAmortizacion contAr = new ControladorAmortizacion();
+        List<Amortizacion> lis = contAr.listar(id);
+        DefaultTableModel model = (DefaultTableModel) detalle.getModel();
+        int index = 0;
+        for (Amortizacion u : lis) {
+            model.insertRow(index, new Object[]{u.getIdAmortizacion(), u.getPeriodo(), u.getInteres(), u.getCapitalSin(), u.getCouta(), u.getDeuda(), u.getEstado(), u.getFecha()});
+            index++;
+        }
+        
+    }//GEN-LAST:event_prestamoMouseClicked
     public void limpiarTabla() {
         DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+        while (modelo.getRowCount() > 0) {
+            modelo.removeRow(0);
+        }
+    }
+    
+    public void limpiarTablaDetalle() {
+        DefaultTableModel modelo = (DefaultTableModel) detalle.getModel();
         while (modelo.getRowCount() > 0) {
             modelo.removeRow(0);
         }
@@ -724,17 +756,16 @@ public class VistaPrestamo extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnGuardar;
-    private javax.swing.JButton buscar4;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.JComboBox<String> comboMeses;
+    private javax.swing.JTable detalle;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -745,16 +776,17 @@ public class VistaPrestamo extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane panelCrud;
+    private javax.swing.JTable prestamo;
     private javax.swing.JTable tabla;
     private javax.swing.JLabel telefono;
     private javax.swing.JLabel telefono1;
     private javax.swing.JLabel telefono2;
     private javax.swing.JLabel telefono3;
-    private javax.swing.JTextField txtBuscarM;
     private javax.swing.JTextField txtCantidad;
     private javax.swing.JTextField txtCedula;
     private javax.swing.JTextField txtCliente;
