@@ -3,17 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/vinic/Documents/NetBeansProjects/PRESTAMOS/src/vista/Cliente/ListarUsuario.java</file>
-            <file>file:/C:/Users/vinic/Documents/NetBeansProjects/PRESTAMOS/src/vista/Fundacion/EditarFundacion.java</file>
-            <file>file:/C:/Users/vinic/Documents/NetBeansProjects/PRESTAMOS/src/vista/Cliente/EliminarUsuario.java</file>
-            <file>file:/C:/Users/vinic/Documents/NetBeansProjects/PRESTAMOS/src/modelo/Amortizacion.java</file>
-            <file>file:/C:/Users/vinic/Documents/NetBeansProjects/PRESTAMOS/src/vista/Cliente/EditarUsuario.java</file>
-            <file>file:/C:/Users/vinic/Documents/NetBeansProjects/PRESTAMOS/src/vista/Login.java</file>
-            <file>file:/C:/Users/vinic/Documents/NetBeansProjects/PRESTAMOS/src/controlador/ControladorAdministrador.java</file>
-            <file>file:/C:/Users/vinic/Documents/NetBeansProjects/PRESTAMOS/src/controlador/MySQLDB.java</file>
-            <file>file:/C:/Users/vinic/Documents/NetBeansProjects/PRESTAMOS/src/META-INF/persistence.xml</file>
-            <file>file:/C:/Users/vinic/Documents/NetBeansProjects/PRESTAMOS/src/vista/Cliente/CrearUsuario.java</file>
-            <file>file:/C:/Users/vinic/Documents/NetBeansProjects/PRESTAMOS/src/controlador/ControladorAmortizacion.java</file>
+            <file>file:/C:/Users/vinic/Documents/NetBeansProjects/PRESTAMOS/src/vista/VistaSecretaria.java</file>
+            <file>file:/C:/Users/vinic/Documents/NetBeansProjects/PRESTAMOS/src/vista/VistaAdministrador.java</file>
+            <file>file:/C:/Users/vinic/Documents/NetBeansProjects/PRESTAMOS/src/vista/prestamo/CobrarPrestamo.java</file>
         </group>
     </open-files>
 </project-private>

@@ -75,7 +75,6 @@ public class VistaPrestamo extends javax.swing.JInternalFrame {
 
         comboMeses.removeAll();
         comboMeses.addItem("Seleccione");
-        comboMeses.addItem("6.25");
         for (int i = 1; i < 101; i++) {
             comboMeses.addItem(i + "");
         }
@@ -124,6 +123,7 @@ public class VistaPrestamo extends javax.swing.JInternalFrame {
         detalle = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
         prestamo = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
@@ -438,12 +438,16 @@ public class VistaPrestamo extends javax.swing.JInternalFrame {
 
         panelCrud.addTab("CREAR", jPanel1);
 
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jLabel23.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jLabel23.setText("LISTA DE PRESTAMOS");
+        jPanel6.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 0, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("Verdana", 3, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 255));
         jLabel11.setText("DETALLE");
+        jPanel6.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 253, -1, -1));
 
         detalle.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -454,6 +458,8 @@ public class VistaPrestamo extends javax.swing.JInternalFrame {
             }
         ));
         jScrollPane2.setViewportView(detalle);
+
+        jPanel6.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 309, 919, 231));
 
         prestamo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -470,37 +476,16 @@ public class VistaPrestamo extends javax.swing.JInternalFrame {
         });
         jScrollPane3.setViewportView(prestamo);
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(183, 183, 183)
-                .addComponent(jLabel23)
-                .addContainerGap(672, Short.MAX_VALUE))
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 919, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(95, 95, 95)
-                .addComponent(jLabel11)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addComponent(jLabel23)
-                .addGap(37, 37, 37)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(jLabel11)
-                .addGap(38, 38, 38)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(62, Short.MAX_VALUE))
-        );
+        jPanel6.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 56, 919, 170));
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/garbage.png"))); // NOI18N
+        jButton1.setText("ELIMINAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel6.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 240, -1, -1));
 
         panelCrud.addTab("LISTA", jPanel6);
 
@@ -525,14 +510,14 @@ public class VistaPrestamo extends javax.swing.JInternalFrame {
         DefaultTableModel model = (DefaultTableModel) prestamo.getModel();
         int index = 0;
         for (Prestamo u : pres) {
-            model.insertRow(index, new Object[]{u.getIdPrestamo(), u.getCantidad(), u.getMeses() + " "+ u.getInteres(), (u.getIdUsuario().getNombre() +" " + u.getIdUsuario().getApellido())});
+            model.insertRow(index, new Object[]{u.getIdPrestamo(), u.getCantidad(), u.getMeses() + " " + u.getInteres(), (u.getIdUsuario().getNombre() + " " + u.getIdUsuario().getApellido())});
             index++;
         }
 
     }
     private void panelCrudStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_panelCrudStateChanged
         int n = panelCrud.getSelectedIndex();
-        if (n == 2) {
+        if (n == 1) {
             llenarTabla();
         }
     }//GEN-LAST:event_panelCrudStateChanged
@@ -629,32 +614,32 @@ public class VistaPrestamo extends javax.swing.JInternalFrame {
         if (bandera) {
             double catidad = Integer.parseInt(txtCantidad.getText());
             ControladorFundacion conFun = new ControladorFundacion();
-            Fundacion f  = conFun.findByID(1);
+            Fundacion f = conFun.findByID(1);
             BigDecimal valor = f.getValorNeto();
-            if(catidad < valor.doubleValue()){
+            if (catidad < valor.doubleValue()) {
                 int meses = Integer.parseInt(txtMeses.getText());
-            double iva = (int) comboMeses.getSelectedIndex();
+                double iva = (int) comboMeses.getSelectedIndex();
 
-            double cuota = catidad / meses;
-            double interes = catidad * (iva * 0.01);
+                double cuota = catidad / meses;
+                double interes = catidad * (iva * 0.01);
 
-            Date date = new Date();
-            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                Date date = new Date();
+                DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
-            DefaultTableModel model = (DefaultTableModel) tabla.getModel();
-            model.insertRow(0, new Object[]{0, 0, 0, 0, catidad, dateFormat.format(date)});
-            for (int i = 1; i < meses + 1; i++) {
-                catidad = (double) tabla.getValueAt(i - 1, 4);
-                interes = catidad * (iva * 0.01);
-                date.setMonth(date.getMonth() + 1);
-                model.insertRow(i, new Object[]{i, interes, cuota, interes + cuota, catidad - cuota, dateFormat.format(date)});
-            }
-            btnGuardar.setEnabled(true);
-            }else{
+                DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+                model.insertRow(0, new Object[]{0, 0, 0, 0, catidad, dateFormat.format(date)});
+                for (int i = 1; i < meses + 1; i++) {
+                    catidad = (double) tabla.getValueAt(i - 1, 4);
+                    interes = catidad * (iva * 0.01);
+                    date.setMonth(date.getMonth() + 1);
+                    model.insertRow(i, new Object[]{i, interes, cuota, interes + cuota, catidad - cuota, dateFormat.format(date)});
+                }
+                btnGuardar.setEnabled(true);
+            } else {
                 JOptionPane.showMessageDialog(this, "La Fundacion no cuenta con esa catidad para prestar");
                 btnGuardar.setEnabled(false);
             }
-            
+
         } else {
             JOptionPane.showMessageDialog(this, "Exiten errores en los campos!! \nVerfique los datos ingresados", "PRESTAMO", JOptionPane.ERROR_MESSAGE);
             btnGuardar.setEnabled(false);
@@ -702,7 +687,7 @@ public class VistaPrestamo extends javax.swing.JInternalFrame {
                 controladorAmortizacion.Crear(a);
             }
             ControladorFundacion conFun = new ControladorFundacion();
-            Fundacion f  = conFun.findByID(1);
+            Fundacion f = conFun.findByID(1);
             double valor = f.getValorNeto().doubleValue();
             double resta = valor - catidad;
             f.setValorNeto(BigDecimal.valueOf(resta));
@@ -737,15 +722,40 @@ public class VistaPrestamo extends javax.swing.JInternalFrame {
             model.insertRow(index, new Object[]{u.getIdAmortizacion(), u.getPeriodo(), u.getInteres(), u.getCapitalSin(), u.getCouta(), u.getDeuda(), u.getEstado(), u.getFecha()});
             index++;
         }
-        
+
     }//GEN-LAST:event_prestamoMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int fila = -500;
+        fila = prestamo.getSelectedRow();
+
+        if (fila != -1) {
+            ControladorFundacion conf = new ControladorFundacion();
+            Fundacion f = conf.findByID(1);
+            double valor = f.getValorNeto().doubleValue();
+            BigDecimal cantidad = (BigDecimal) prestamo.getValueAt(fila, 1);
+            double resta = valor + cantidad.doubleValue();
+            f.setValorNeto(BigDecimal.valueOf(resta));
+            conf.edit(f);
+            ControladorAmortizacion cont = new ControladorAmortizacion();
+            cont.eliminarALL((int) prestamo.getValueAt(fila, 0));
+            ControladorPrestamo contp = new ControladorPrestamo();
+            contp.eliminar((int) prestamo.getValueAt(fila, 0));
+            limpiarTabla();
+            limpiarTablaDetalle();
+            llenarTabla();
+        } else {
+            JOptionPane.showMessageDialog(this, "POR FAVOR, SELECIONE UN FILA");
+        }
+
+    }//GEN-LAST:event_jButton1ActionPerformed
     public void limpiarTabla() {
-        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+        DefaultTableModel modelo = (DefaultTableModel) prestamo.getModel();
         while (modelo.getRowCount() > 0) {
             modelo.removeRow(0);
         }
     }
-    
+
     public void limpiarTablaDetalle() {
         DefaultTableModel modelo = (DefaultTableModel) detalle.getModel();
         while (modelo.getRowCount() > 0) {
@@ -761,6 +771,7 @@ public class VistaPrestamo extends javax.swing.JInternalFrame {
     private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.JComboBox<String> comboMeses;
     private javax.swing.JTable detalle;
+    private javax.swing.JButton jButton1;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

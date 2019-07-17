@@ -79,4 +79,11 @@ public class ControladorAmortizacion {
         List<Amortizacion> lis = q.getResultList();
         return lis;
     }
+    
+    public void eliminarALL(int id) {
+        List<Amortizacion> lis = listar(id);
+        for (Amortizacion li : lis) {
+            eliminar(li.getIdAmortizacion());
+        }
+    }
 }

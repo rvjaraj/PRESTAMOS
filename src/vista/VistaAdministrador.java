@@ -160,7 +160,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
         listadeClientes3.setText("PROGRAMA");
 
         salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/login.png"))); // NOI18N
-        salir.setText("SALIR");
+        salir.setText("LOGIN");
         salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salirActionPerformed(evt);

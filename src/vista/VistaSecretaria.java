@@ -46,14 +46,11 @@ public class VistaSecretaria extends javax.swing.JFrame {
         eliminar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         listadeClientes1 = new javax.swing.JLabel();
-        crear1 = new javax.swing.JButton();
-        editar1 = new javax.swing.JButton();
         buscar1 = new javax.swing.JButton();
-        listar1 = new javax.swing.JButton();
-        eliminar1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         listadeClientes2 = new javax.swing.JLabel();
         salir = new javax.swing.JButton();
+        salir1 = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -107,22 +104,24 @@ public class VistaSecretaria extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(listadeClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(376, 376, 376))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(60, 60, 60)
                 .addComponent(crear)
                 .addGap(74, 74, 74)
                 .addComponent(editar)
-                .addGap(96, 96, 96)
-                .addComponent(buscar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
-                .addComponent(listar)
-                .addGap(83, 83, 83)
-                .addComponent(eliminar)
-                .addGap(42, 42, 42))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(96, 96, 96)
+                        .addComponent(listadeClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(160, 160, 160)
+                        .addComponent(buscar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 204, Short.MAX_VALUE)
+                        .addComponent(listar)
+                        .addGap(83, 83, 83)
+                        .addComponent(eliminar)
+                        .addGap(42, 42, 42))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,43 +141,11 @@ public class VistaSecretaria extends javax.swing.JFrame {
         listadeClientes1.setFont(new java.awt.Font("Verdana", 3, 14)); // NOI18N
         listadeClientes1.setText("CONTROLADOR COBROS");
 
-        crear1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/agregar.png"))); // NOI18N
-        crear1.setText("CREAR");
-        crear1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                crear1ActionPerformed(evt);
-            }
-        });
-
-        editar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/actualizar.png"))); // NOI18N
-        editar1.setText("EDITAR");
-        editar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editar1ActionPerformed(evt);
-            }
-        });
-
-        buscar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar.png"))); // NOI18N
-        buscar1.setText("BUSCAR");
+        buscar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cobro.png"))); // NOI18N
+        buscar1.setText("COBRAS CUOTAS DE PRESTAMO");
         buscar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buscar1ActionPerformed(evt);
-            }
-        });
-
-        listar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listar.png"))); // NOI18N
-        listar1.setText("LISTAR");
-        listar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                listar1ActionPerformed(evt);
-            }
-        });
-
-        eliminar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/remover.png"))); // NOI18N
-        eliminar1.setText("ELMINAR");
-        eliminar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                eliminar1ActionPerformed(evt);
             }
         });
 
@@ -186,36 +153,23 @@ public class VistaSecretaria extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(listadeClientes1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(376, 376, 376))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(crear1)
-                .addGap(74, 74, 74)
-                .addComponent(editar1)
-                .addGap(96, 96, 96)
-                .addComponent(buscar1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(listar1)
-                .addGap(83, 83, 83)
-                .addComponent(eliminar1)
-                .addGap(42, 42, 42))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(436, 436, 436)
+                        .addComponent(listadeClientes1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(404, 404, 404)
+                        .addComponent(buscar1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(listadeClientes1)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(crear1)
-                    .addComponent(editar1)
-                    .addComponent(buscar1)
-                    .addComponent(listar1)
-                    .addComponent(eliminar1))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(buscar1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         listadeClientes2.setFont(new java.awt.Font("Verdana", 3, 14)); // NOI18N
@@ -229,18 +183,27 @@ public class VistaSecretaria extends javax.swing.JFrame {
             }
         });
 
+        salir1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/login.png"))); // NOI18N
+        salir1.setText("LOGIN");
+        salir1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salir1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(164, 164, 164)
+                .addComponent(salir1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(salir)
+                .addGap(132, 132, 132))
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(431, 431, 431)
-                        .addComponent(salir))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(441, 441, 441)
-                        .addComponent(listadeClientes2)))
+                .addGap(474, 474, 474)
+                .addComponent(listadeClientes2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -248,9 +211,11 @@ public class VistaSecretaria extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(listadeClientes2)
-                .addGap(18, 18, 18)
-                .addComponent(salir)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(salir)
+                    .addComponent(salir1))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         fondo.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -262,7 +227,7 @@ public class VistaSecretaria extends javax.swing.JFrame {
         fondoLayout.setHorizontalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoLayout.createSequentialGroup()
-                .addContainerGap(563, Short.MAX_VALUE)
+                .addContainerGap(445, Short.MAX_VALUE)
                 .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -296,7 +261,7 @@ public class VistaSecretaria extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(fondo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 1106, Short.MAX_VALUE))
+                .addGap(0, 1112, Short.MAX_VALUE))
         );
 
         pack();
@@ -332,29 +297,20 @@ public class VistaSecretaria extends javax.swing.JFrame {
         eu.setVisible(true);
     }//GEN-LAST:event_eliminarActionPerformed
 
-    private void crear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crear1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_crear1ActionPerformed
-
-    private void editar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editar1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_editar1ActionPerformed
-
     private void buscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscar1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_buscar1ActionPerformed
 
-    private void listar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listar1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_listar1ActionPerformed
-
-    private void eliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminar1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_eliminar1ActionPerformed
-
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
     System.exit(0);        // TODO add your handling code here:
     }//GEN-LAST:event_salirActionPerformed
+
+    private void salir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salir1ActionPerformed
+        Login vu = new Login();
+        String[] args = null;
+        vu.main(args);
+        this.dispose();
+    }//GEN-LAST:event_salir1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -395,11 +351,8 @@ public class VistaSecretaria extends javax.swing.JFrame {
     private javax.swing.JButton buscar;
     private javax.swing.JButton buscar1;
     private javax.swing.JButton crear;
-    private javax.swing.JButton crear1;
     private javax.swing.JButton editar;
-    private javax.swing.JButton editar1;
     private javax.swing.JButton eliminar;
-    private javax.swing.JButton eliminar1;
     private javax.swing.JDesktopPane fondo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -408,9 +361,9 @@ public class VistaSecretaria extends javax.swing.JFrame {
     private javax.swing.JLabel listadeClientes1;
     private javax.swing.JLabel listadeClientes2;
     private javax.swing.JButton listar;
-    private javax.swing.JButton listar1;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JButton salir;
+    private javax.swing.JButton salir1;
     // End of variables declaration//GEN-END:variables
 
 }

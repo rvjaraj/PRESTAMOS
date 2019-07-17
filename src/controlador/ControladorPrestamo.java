@@ -58,8 +58,10 @@ public class ControladorPrestamo {
             Prestamo u = em.find(Prestamo.class, id);
             em.remove(u);
             em.getTransaction().commit();
+            System.out.println("ajajajaj");
         } catch (Exception e) {
             em.getTransaction().rollback();
+            System.out.println(e.getMessage());
             return false;
         }
         return true;
