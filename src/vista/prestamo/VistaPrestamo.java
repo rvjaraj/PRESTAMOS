@@ -592,7 +592,7 @@ public class VistaPrestamo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtMesesKeyTyped
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        limpiarTabla();
+        limpiarTablag();
         boolean bandera = true;
         if (txtCliente.getText().equals("")) {
             bandera = false;
@@ -748,6 +748,13 @@ public class VistaPrestamo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
     public void limpiarTabla() {
         DefaultTableModel modelo = (DefaultTableModel) prestamo.getModel();
+        while (modelo.getRowCount() > 0) {
+            modelo.removeRow(0);
+        }
+    }
+    
+    public void limpiarTablag() {
+        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
         while (modelo.getRowCount() > 0) {
             modelo.removeRow(0);
         }
