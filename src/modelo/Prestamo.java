@@ -37,6 +37,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Prestamo.findByIdPrestamo", query = "SELECT p FROM Prestamo p WHERE p.idPrestamo = :idPrestamo")
     , @NamedQuery(name = "Prestamo.findByCantidad", query = "SELECT p FROM Prestamo p WHERE p.cantidad = :cantidad")
     , @NamedQuery(name = "Prestamo.findByMeses", query = "SELECT p FROM Prestamo p WHERE p.meses = :meses")
+    , @NamedQuery(name = "Prestamo.findByUsuario", query = "SELECT p FROM Prestamo p WHERE p.idUsuario = :usuario")
     , @NamedQuery(name = "Prestamo.findByInteres", query = "SELECT p FROM Prestamo p WHERE p.interes = :interes")})
 public class Prestamo implements Serializable {
 

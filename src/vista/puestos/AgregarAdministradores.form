@@ -185,6 +185,7 @@
           <SubComponents>
             <Component class="javax.swing.JTable" name="tabla1">
               <Properties>
+                <Property name="autoCreateColumnsFromModel" type="boolean" value="false"/>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="cc" type="rgb"/>
                 </Property>

@@ -11,6 +11,7 @@ import javax.persistence.EntityNotFoundException;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import modelo.Prestamo;
+import modelo.Usuario;
 
 /**
  *
@@ -50,6 +51,18 @@ public class ControladorPrestamo {
             u = null;
         }
         return u;
+    }
+    
+    public List<Prestamo> findByUsuario(Usuario ced) {
+        TypedQuery<Prestamo> consultaUsuario = em.createNamedQuery("Prestamo.findByUsuario", Prestamo.class);
+        consultaUsuario.setParameter("usuario", ced);
+        List<Prestamo> lista = null;
+        try{
+             lista = consultaUsuario.getResultList();
+        }catch(Exception e){
+            lista = null;
+        }
+        return lista;
     }
 
     public boolean eliminar(int id) {

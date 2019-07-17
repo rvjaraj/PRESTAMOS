@@ -510,7 +510,7 @@ public class VistaPrestamo extends javax.swing.JInternalFrame {
         DefaultTableModel model = (DefaultTableModel) prestamo.getModel();
         int index = 0;
         for (Prestamo u : pres) {
-            model.insertRow(index, new Object[]{u.getIdPrestamo(), u.getCantidad(), u.getMeses() + " " + u.getInteres(), (u.getIdUsuario().getNombre() + " " + u.getIdUsuario().getApellido())});
+            model.insertRow(index, new Object[]{u.getIdPrestamo(), u.getCantidad(), u.getMeses(),u.getInteres(), (u.getIdUsuario().getNombre() + " " + u.getIdUsuario().getApellido())});
             index++;
         }
 

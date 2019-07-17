@@ -189,24 +189,12 @@ public class Login extends javax.swing.JFrame {
                     boolean res = controlador.loginUsuario(txtCedula.getText(), txtContra.getText());
                     if (res) {
                         JOptionPane.showMessageDialog(this, "ACCEDE COMO USUARIO ");
-                        VistaUsuario vu = new VistaUsuario();
+                        VistaUsuario vu = new VistaUsuario(txtCedula.getText());
                         String[] args = null;
-                        vu.main(args);
+                        vu.main(txtCedula.getText());
+                        vu.setCedula(txtCedula.getText());
                         pasar = false;
                         this.dispose();
-                    }
-                    if (pasar) {
-                        if (txtCedula.getText().equals(cedulaRoot)) {
-                            if (txtContra.getText().equals(contraRoot)) {
-                                JOptionPane.showMessageDialog(this, "ACCEDE COMO USUARIO ROOT");
-                                VistaUsuario vu = new VistaUsuario();
-                                String[] args = null;
-                                vu.main(args);
-                                pasar = false;
-                                this.dispose();
-
-                            }
-                        }
                     }
                     break;
                 case "SECRETARIA":

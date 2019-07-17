@@ -10,6 +10,7 @@ import vista.Cliente.CrearUsuario;
 import vista.Cliente.EditarUsuario;
 import vista.Cliente.EliminarUsuario;
 import vista.Cliente.ListarUsuario;
+import vista.prestamo.CobrarPrestamo;
 
 /**
  *
@@ -117,7 +118,7 @@ public class VistaSecretaria extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(160, 160, 160)
                         .addComponent(buscar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 204, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 214, Short.MAX_VALUE)
                         .addComponent(listar)
                         .addGap(83, 83, 83)
                         .addComponent(eliminar)
@@ -198,7 +199,7 @@ public class VistaSecretaria extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(164, 164, 164)
                 .addComponent(salir1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 545, Short.MAX_VALUE)
                 .addComponent(salir)
                 .addGap(132, 132, 132))
             .addGroup(jPanel3Layout.createSequentialGroup()
@@ -227,7 +228,7 @@ public class VistaSecretaria extends javax.swing.JFrame {
         fondoLayout.setHorizontalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoLayout.createSequentialGroup()
-                .addContainerGap(445, Short.MAX_VALUE)
+                .addContainerGap(425, Short.MAX_VALUE)
                 .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -298,7 +299,9 @@ public class VistaSecretaria extends javax.swing.JFrame {
     }//GEN-LAST:event_eliminarActionPerformed
 
     private void buscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscar1ActionPerformed
-        // TODO add your handling code here:
+        CobrarPrestamo eu = new CobrarPrestamo();
+        fondo.add(eu);
+        eu.setVisible(true);
     }//GEN-LAST:event_buscar1ActionPerformed
 
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
