@@ -5,6 +5,10 @@
  */
 package vista;
 
+import vista.Cliente.DatosUsuario;
+import vista.prestamo.CobrarPrestamo;
+import vista.prestamo.PrestamoUsuario;
+
 /**
  *
  * @author vinic
@@ -14,8 +18,8 @@ public class VistaUsuario extends javax.swing.JFrame {
     /**
      * Creates new form VistaUsuario
      */
-     String cedula;
-    
+    String cedula;
+
     public VistaUsuario(String cedula) {
         initComponents();
         this.cedula = cedula;
@@ -38,7 +42,7 @@ public class VistaUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        desktopPane = new javax.swing.JDesktopPane();
+        fondo = new javax.swing.JDesktopPane();
         jPanel3 = new javax.swing.JPanel();
         listadeClientes2 = new javax.swing.JLabel();
         salir = new javax.swing.JButton();
@@ -96,7 +100,7 @@ public class VistaUsuario extends javax.swing.JFrame {
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
-        desktopPane.add(jPanel3);
+        fondo.add(jPanel3);
         jPanel3.setBounds(30, 250, 850, 167);
 
         buscar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/produ_1.png"))); // NOI18N
@@ -136,7 +140,7 @@ public class VistaUsuario extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        desktopPane.add(jPanel2);
+        fondo.add(jPanel2);
         jPanel2.setBounds(100, 50, 683, 119);
 
         setJMenuBar(menuBar);
@@ -146,14 +150,14 @@ public class VistaUsuario extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 931, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fondo, javax.swing.GroupLayout.PREFERRED_SIZE, 1215, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(fondo, javax.swing.GroupLayout.PREFERRED_SIZE, 814, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 223, Short.MAX_VALUE))
         );
 
         pack();
@@ -171,18 +175,22 @@ public class VistaUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_salir1ActionPerformed
 
     private void buscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscar1ActionPerformed
-        System.out.println(getCedula());
+        DatosUsuario eu = new DatosUsuario(cedula);
+        fondo.add(eu);
+        eu.setVisible(true);
     }//GEN-LAST:event_buscar1ActionPerformed
 
     private void buscar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscar2ActionPerformed
-        // TODO add your handling code here:
+        PrestamoUsuario eu = new PrestamoUsuario(cedula);
+        fondo.add(eu);
+        eu.setVisible(true);
     }//GEN-LAST:event_buscar2ActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String cedula) {
-        
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new VistaUsuario(cedula).setVisible(true);
@@ -193,7 +201,7 @@ public class VistaUsuario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buscar1;
     private javax.swing.JButton buscar2;
-    private javax.swing.JDesktopPane desktopPane;
+    private javax.swing.JDesktopPane fondo;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel listadeClientes2;

@@ -34,17 +34,33 @@ public class PrestamoUsuario extends javax.swing.JInternalFrame {
      * Creates new form Crear
      */
     private DefaultTableModel modelotabla;
+    private String cedula;
 
-    public PrestamoUsuario() {
+    public PrestamoUsuario(String cedula) {
         initComponents();
         modelotabla = new DefaultTableModel();
-
+        this.cedula = cedula;
+        llenarTabla();
     }
 
     public void limpiarTablaPrestamo() {
         DefaultTableModel modelo = (DefaultTableModel) prestamo.getModel();
         while (modelo.getRowCount() > 0) {
             modelo.removeRow(0);
+        }
+    }
+
+    public void llenarTabla() {
+        ControladorUsuario conU = new ControladorUsuario();
+        Usuario uu = conU.findByCedula(cedula);
+        ControladorPrestamo contp = new ControladorPrestamo();
+        List<Prestamo> pres = contp.findByUsuario(uu);
+
+        DefaultTableModel model = (DefaultTableModel) prestamo.getModel();
+        int index = 0;
+        for (Prestamo u : pres) {
+            model.insertRow(index, new Object[]{u.getIdPrestamo(), u.getCantidad(), u.getMeses(), u.getInteres(), (u.getIdUsuario().getNombre() + " " + u.getIdUsuario().getApellido())});
+            index++;
         }
     }
 
@@ -116,7 +132,7 @@ public class PrestamoUsuario extends javax.swing.JInternalFrame {
         jLabel23.setText("LISTA DE PRESTAMOS");
 
         jLabel24.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
-        jLabel24.setText("CUOTAS POR PAGAR");
+        jLabel24.setText("CUOTAS");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);

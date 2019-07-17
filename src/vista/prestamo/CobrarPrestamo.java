@@ -199,7 +199,6 @@ public class CobrarPrestamo extends javax.swing.JInternalFrame {
         ingreseCedula.setText("INGRESE CEDULA: ");
         getContentPane().add(ingreseCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 164, 20));
 
-        txtCedula.setText("0105452171");
         txtCedula.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtCedulaKeyTyped(evt);
@@ -338,7 +337,5 @@ public class CobrarPrestamo extends javax.swing.JInternalFrame {
     private javax.swing.JTable porPagar;
     private javax.swing.JTable prestamo;
     private javax.swing.JTextField txtCedula;
-    private javax.swing.JTextField txtCedulaB;
-    private javax.swing.JTextField txtCedulaB1;
     // End of variables declaration//GEN-END:variables
 }

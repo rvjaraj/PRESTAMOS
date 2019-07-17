@@ -196,7 +196,6 @@ public class VistaPrestamo extends javax.swing.JInternalFrame {
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel8.setText("CLIENTE: ");
 
-        txtCedula.setText("0105452171");
         txtCedula.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtCedulaKeyPressed(evt);
@@ -302,7 +301,6 @@ public class VistaPrestamo extends javax.swing.JInternalFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        txtCantidad.setText("12000");
         txtCantidad.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtCantidadKeyTyped(evt);
@@ -315,7 +313,6 @@ public class VistaPrestamo extends javax.swing.JInternalFrame {
         telefono1.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         telefono1.setText("VALOR DE INTERES ");
 
-        txtMeses.setText("12");
         txtMeses.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtMesesKeyPressed(evt);

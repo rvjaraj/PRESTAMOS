@@ -290,9 +290,6 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtCedula">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="0105452171"/>
-                  </Properties>
                   <Events>
                     <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCedulaKeyPressed"/>
                     <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCedulaKeyTyped"/>
@@ -445,9 +442,6 @@
               </Layout>
               <SubComponents>
                 <Component class="javax.swing.JTextField" name="txtCantidad">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="12000"/>
-                  </Properties>
                   <Events>
                     <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCantidadKeyTyped"/>
                   </Events>
@@ -479,9 +473,6 @@
                   </AuxValues>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtMeses">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="12"/>
-                  </Properties>
                   <Events>
                     <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtMesesKeyPressed"/>
                     <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtMesesKeyTyped"/>
