@@ -198,7 +198,7 @@ public class CrearUsuario extends javax.swing.JInternalFrame {
             bander = false;
         }
         if (bander) {
-            Usuario u = new Usuario(0, txtCedula.getText(), txtNombre.getText(), txtApellido.getText(), txtTelefono.getText(), txtDirecion.getText(), txtContra.getText(), "NO");
+            Usuario u = new Usuario(0, txtCedula.getText(), txtNombre.getText(), txtApellido.getText(), txtTelefono.getText(), txtDirecion.getText(), txtContra.getText(), "NO", "Sin especificar");
             try {
                 if(controlador.findByCedula(txtCedula.getText()) == null){
                 controlador.createUsuario(u);

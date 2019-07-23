@@ -609,6 +609,7 @@ public class VistaPrestamo extends javax.swing.JInternalFrame {
         }
 
         if (bandera) {
+            try{
             double catidad = Integer.parseInt(txtCantidad.getText());
             ControladorFundacion conFun = new ControladorFundacion();
             Fundacion f = conFun.findByID(1);
@@ -636,7 +637,9 @@ public class VistaPrestamo extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, "La Fundacion no cuenta con esa catidad para prestar");
                 btnGuardar.setEnabled(false);
             }
-
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(this, "No exite BANCO");
+            }
         } else {
             JOptionPane.showMessageDialog(this, "Exiten errores en los campos!! \nVerfique los datos ingresados", "PRESTAMO", JOptionPane.ERROR_MESSAGE);
             btnGuardar.setEnabled(false);
@@ -665,9 +668,16 @@ public class VistaPrestamo extends javax.swing.JInternalFrame {
             int meses = Integer.parseInt(txtMeses.getText());
             int iva = (int) comboMeses.getSelectedIndex();
             ControladorUsuario controladorUsuario = new ControladorUsuario();
-            Prestamo p = new Prestamo(0, BigDecimal.valueOf(catidad), meses, iva, controladorUsuario.findByCedula(txtCedula.getText()));
+            Usuario usu = controladorUsuario.findByCedula(txtCedula.getText());
+            Prestamo p = new Prestamo(0, BigDecimal.valueOf(catidad), meses, iva,usu );
             ControladorPrestamo controladorPrestamo = new ControladorPrestamo();
             controladorPrestamo.createPrestamo(p);
+            
+            usu.setPrestamo("NO");
+            controladorUsuario.edit(usu);
+            
+            
+            
             btnGuardar.setEnabled(false);
 
             p = controladorPrestamo.MaxId().get(0);

@@ -93,9 +93,9 @@ public class AgregarAdministradores extends javax.swing.JInternalFrame {
         tabla = new javax.swing.JTable();
         listadeClientes = new javax.swing.JLabel();
         btnActualizar = new javax.swing.JButton();
+        listadeClientes1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabla1 = new javax.swing.JTable();
-        listadeClientes1 = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -136,7 +136,9 @@ public class AgregarAdministradores extends javax.swing.JInternalFrame {
             }
         });
 
-        tabla1.setAutoCreateColumnsFromModel(false);
+        listadeClientes1.setFont(new java.awt.Font("Verdana", 3, 14)); // NOI18N
+        listadeClientes1.setText("LISTA DE ADMINISTRADORES");
+
         tabla1.setBackground(new java.awt.Color(204, 255, 255));
         tabla1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -156,9 +158,6 @@ public class AgregarAdministradores extends javax.swing.JInternalFrame {
         });
         jScrollPane2.setViewportView(tabla1);
 
-        listadeClientes1.setFont(new java.awt.Font("Verdana", 3, 14)); // NOI18N
-        listadeClientes1.setText("LISTA DE ADMINISTRADORES");
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -171,15 +170,15 @@ public class AgregarAdministradores extends javax.swing.JInternalFrame {
                 .addComponent(btnActualizar)
                 .addGap(68, 68, 68))
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jScrollPane2)
-                .addContainerGap())
-            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(listadeClientes1, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(listadeClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addComponent(jScrollPane2)
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,9 +191,9 @@ public class AgregarAdministradores extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(listadeClientes1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

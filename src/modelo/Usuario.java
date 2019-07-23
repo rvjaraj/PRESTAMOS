@@ -46,7 +46,7 @@ import javax.xml.bind.annotation.XmlTransient;
 public class Usuario implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
-    private Collection<Prestamo> prestamoCollection;
+    private Collection<Administrador> administradorCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -74,6 +74,8 @@ public class Usuario implements Serializable {
     private String contracenia;
     @Column(name = "prestamo")
     private String prestamo;
+    @Column(name = "motivo")
+    private String motivo;
 
     public Usuario() {
     }
@@ -82,7 +84,7 @@ public class Usuario implements Serializable {
         this.idUsuario = idUsuario;
     }
 
-    public Usuario(Integer idUsuario, String cedula, String nombre, String apellido, String telefono, String direccion, String contracenia, String prestamo) {
+    public Usuario(Integer idUsuario, String cedula, String nombre, String apellido, String telefono, String direccion, String contracenia, String prestamo, String motivo) {
         this.idUsuario = idUsuario;
         this.cedula = cedula;
         this.nombre = nombre;
@@ -91,6 +93,7 @@ public class Usuario implements Serializable {
         this.direccion = direccion;
         this.contracenia = contracenia;
         this.prestamo = prestamo;
+        this.motivo = motivo;
     }
 
     public Integer getIdUsuario() {
@@ -157,6 +160,14 @@ public class Usuario implements Serializable {
         this.prestamo = prestamo;
     }
 
+    public String getMotivo() {
+        return motivo;
+    }
+
+    public void setMotivo(String motivo) {
+        this.motivo = motivo;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -183,12 +194,12 @@ public class Usuario implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Prestamo> getPrestamoCollection() {
-        return prestamoCollection;
+    public Collection<Administrador> getAdministradorCollection() {
+        return administradorCollection;
     }
 
-    public void setPrestamoCollection(Collection<Prestamo> prestamoCollection) {
-        this.prestamoCollection = prestamoCollection;
+    public void setAdministradorCollection(Collection<Administrador> administradorCollection) {
+        this.administradorCollection = administradorCollection;
     }
 
 }

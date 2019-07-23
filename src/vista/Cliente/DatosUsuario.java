@@ -21,7 +21,7 @@ public class DatosUsuario extends javax.swing.JInternalFrame {
      * Creates new form Crear
      */
     private ControladorUsuario controlador;
-    private String cedula1, prestamo;
+    private String cedula1, prestamo, motivo;
     private int codAux = 0;
     public DatosUsuario(String cedula) {
         initComponents();
@@ -38,6 +38,7 @@ public class DatosUsuario extends javax.swing.JInternalFrame {
         txtDirecion.setText(u.getDireccion());
         txtContra.setText(u.getContracenia());
         prestamo = u.getPrestamo();
+        motivo = u.getMotivo();
     }
 
     /**
@@ -211,7 +212,7 @@ public class DatosUsuario extends javax.swing.JInternalFrame {
             bander = false;
         }
         if (bander) {
-            Usuario u = new Usuario(codAux, txtCedula.getText(), txtNombre.getText(), txtApellido.getText(), txtTelefono.getText(), txtDirecion.getText(), txtContra.getText(), prestamo);
+            Usuario u = new Usuario(codAux, txtCedula.getText(), txtNombre.getText(), txtApellido.getText(), txtTelefono.getText(), txtDirecion.getText(), txtContra.getText(), prestamo, motivo);
             try {
                 controlador.edit(u);
                 JOptionPane.showMessageDialog(this, "Cliente Actualizado");

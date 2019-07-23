@@ -28,13 +28,14 @@ public class EditarUsuario extends javax.swing.JInternalFrame {
     private ControladorUsuario controlador;
     private DefaultTableModel modelotabla;
     private int codAux = 0;
-    private String prestamo;
+    private String prestamo, motivo;
 
     public EditarUsuario() {
         initComponents();
         controlador = new ControladorUsuario();
         modelotabla = new DefaultTableModel();
         prestamo = "";
+        motivo = "";
     }
 
     /**
@@ -235,7 +236,7 @@ public class EditarUsuario extends javax.swing.JInternalFrame {
             bander = false;
         }
         if (bander) {
-            Usuario u = new Usuario(codAux, txtCedula.getText(), txtNombre.getText(), txtApellido.getText(), txtTelefono.getText(), txtDirecion.getText(), txtContra.getText(), prestamo);
+            Usuario u = new Usuario(codAux, txtCedula.getText(), txtNombre.getText(), txtApellido.getText(), txtTelefono.getText(), txtDirecion.getText(), txtContra.getText(), prestamo, motivo);
             try {
                 controlador.edit(u);
                 JOptionPane.showMessageDialog(this, "Cliente Actualizado");

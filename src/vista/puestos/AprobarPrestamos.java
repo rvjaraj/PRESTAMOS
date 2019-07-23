@@ -226,21 +226,25 @@ public class AprobarPrestamos extends javax.swing.JInternalFrame {
             int row = tabla.getSelectedRow();
             ControladorUsuario con = new ControladorUsuario();
             Usuario u = con.findByID((int) tabla.getValueAt(row, 0));
-
-            int conf = JOptionPane.showConfirmDialog(this, "DESEA PERMITIR QUE EL USUARIO: \n" + u.getNombre() + " " + u.getApellido() + " \n CON CEDULA: "
-                    + u.getCedula() +"\n PUEDA REALIZAR PRESTAMOS");
-
-            if (conf == JOptionPane.OK_OPTION) {
-                ControladorUsuario cont = new ControladorUsuario();
-                Date now = new Date(System.currentTimeMillis());
-                Date d = new java.util.Date();
-                Date date2 = new java.sql.Date(d.getTime());
-                u.setPrestamo("SI");
-                cont.edit(u);
+            try {
+                String conf = JOptionPane.showInputDialog(this, "DESEA PERMITIR QUE EL USUARIO: \n" + u.getNombre() + " " + u.getApellido() + " \n CON CEDULA: "
+                        + u.getCedula() + "\n PUEDA REALIZAR PRESTAMOS");
+                if (conf.length() > 1) {
+                    ControladorUsuario cont = new ControladorUsuario();
+                    Date now = new Date(System.currentTimeMillis());
+                    Date d = new java.util.Date();
+                    Date date2 = new java.sql.Date(d.getTime());
+                    u.setPrestamo("SI");
+                    u.setMotivo(conf);
+                    cont.edit(u);
+                }
+                limpiarTabla();
+                llenarUsuariosTabla();
+                llenarUsuariosSecre();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "No Escribio nada", "Error", JOptionPane.ERROR_MESSAGE);
             }
-            limpiarTabla();
-            llenarUsuariosTabla();
-            llenarUsuariosSecre();
+
         }
     }//GEN-LAST:event_tablaMouseClicked
 
@@ -251,7 +255,7 @@ public class AprobarPrestamos extends javax.swing.JInternalFrame {
             Usuario u = con.findByID((int) tabla1.getValueAt(row, 0));
 
             int conf = JOptionPane.showConfirmDialog(this, "DESEA BLOQUEAR AL USUARIO: \n" + u.getNombre() + " " + u.getApellido() + " \n CON CEDULA: "
-                    + u.getCedula() +"\n QUE NO PUEDA REALIZAR PRESTAMOS");
+                    + u.getCedula() + "\n QUE NO PUEDA REALIZAR PRESTAMOS");
 
             if (conf == JOptionPane.OK_OPTION) {
                 ControladorUsuario cont = new ControladorUsuario();
