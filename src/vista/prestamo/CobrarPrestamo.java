@@ -147,7 +147,7 @@ public class CobrarPrestamo extends javax.swing.JInternalFrame {
         jScrollPane2.setViewportView(pagadas);
 
         jLabel25.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
-        jLabel25.setText("CUOTAS POR PAGAR");
+        jLabel25.setText("CUOTAS PAGADES");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
