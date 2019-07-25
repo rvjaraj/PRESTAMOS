@@ -3,12 +3,23 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/vinic/Documents/NetBeansProjects/PRESTAMOS/src/vista/puestos/AprobarPrestamos.java</file>
-            <file>file:/C:/Users/vinic/Documents/NetBeansProjects/PRESTAMOS/src/modelo/Administrador.java</file>
+            <file>file:/C:/Users/vinic/Documents/NetBeansProjects/PRESTAMOS/src/vista/Fundacion/EditarFundacion.java</file>
+            <file>file:/C:/Users/vinic/Documents/NetBeansProjects/PRESTAMOS/src/vista/prestamo/PrestamoUsuario.java</file>
+            <file>file:/C:/Users/vinic/Documents/NetBeansProjects/PRESTAMOS/src/modelo/Secretaria.java</file>
+            <file>file:/C:/Users/vinic/Documents/NetBeansProjects/PRESTAMOS/src/vista/VistaAdministrador.java</file>
             <file>file:/C:/Users/vinic/Documents/NetBeansProjects/PRESTAMOS/src/vista/puestos/AgregarSecretarias.java</file>
             <file>file:/C:/Users/vinic/Documents/NetBeansProjects/PRESTAMOS/src/vista/puestos/AgregarAdministradores.java</file>
+            <file>file:/C:/Users/vinic/Documents/NetBeansProjects/PRESTAMOS/src/controlador/ControladorSecretaria.java</file>
+            <file>file:/C:/Users/vinic/Documents/NetBeansProjects/PRESTAMOS/src/META-INF/persistence.xml</file>
+            <file>file:/C:/Users/vinic/Documents/NetBeansProjects/PRESTAMOS/src/vista/puestos/AprobarPrestamos.java</file>
+            <file>file:/C:/Users/vinic/Documents/NetBeansProjects/PRESTAMOS/src/modelo/Administrador.java</file>
+            <file>file:/C:/Users/vinic/Documents/NetBeansProjects/PRESTAMOS/src/vista/prestamo/CobrarPrestamo.java</file>
+            <file>file:/C:/Users/vinic/Documents/NetBeansProjects/PRESTAMOS/src/vista/Login.java</file>
             <file>file:/C:/Users/vinic/Documents/NetBeansProjects/PRESTAMOS/src/controlador/ControladorAdministrador.java</file>
             <file>file:/C:/Users/vinic/Documents/NetBeansProjects/PRESTAMOS/src/vista/prestamo/VistaPrestamo.java</file>
+            <file>file:/C:/Users/vinic/Documents/NetBeansProjects/PRESTAMOS/src/controlador/ControladorLogin.java</file>
+            <file>file:/C:/Users/vinic/Documents/NetBeansProjects/PRESTAMOS/src/modelo/Usuario.java</file>
+            <file>file:/C:/Users/vinic/Documents/NetBeansProjects/PRESTAMOS/src/controlador/ControladorUsuario.java</file>
         </group>
     </open-files>
 </project-private>
