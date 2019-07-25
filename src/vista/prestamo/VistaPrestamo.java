@@ -699,8 +699,7 @@ public class VistaPrestamo extends javax.swing.JInternalFrame {
             double resta = valor - catidad;
             f.setValorNeto(BigDecimal.valueOf(resta));
             conFun.edit(f);
-            JOptionPane.showMessageDialog(this, "CLIENTE DE LA FUNDACION");
-            JOptionPane.showMessageDialog(this, "DATOS INGRESADOS CORRECTAMENTE");
+            JOptionPane.showMessageDialog(this, "EL PRESTAMO ES EFECTIVO, El usuario es cliente");
             btnGuardar.setEnabled(false);
             limpiarTabla();
             txtCedula.setText("");
